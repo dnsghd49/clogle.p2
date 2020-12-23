@@ -3,8 +3,6 @@ var express = require("express");
 var passport = require("./config/passport");
 var session = require("express-session");
 //need to require it somewhere in the file for lint to read file
-//var mysql = require("mysql");
-var PORT = process.env.PORT || 8080;
 // Requiring our models for syncing
 var db = require("./models");
 
