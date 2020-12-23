@@ -26,7 +26,7 @@ require("./routes/user-api-routes.js")(app);
 require("./routes/post-api-routes.js")(app);
 // Syncing our sequelize models and then starting our Express app
 db.sequelize.sync({ force: false }).then(function() {
-  app.listen(process.env.PORT || 3000, function(){
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  app.listen(process.env.PORT || 3000, function() {
+    console.log("http://localhost:" + PORT);
   });
 });
