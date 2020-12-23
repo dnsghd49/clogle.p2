@@ -32,6 +32,17 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/specific-post/:id", function(req, res) {
+
+    db.Post.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+
 
   app.post("/api/posts", function(req, res) {
     db.Post.create(req.body).then(function(dbPost) {
@@ -50,12 +61,15 @@ module.exports = function(app) {
   });
 
 
-  app.put("/api/posts", function(req, res) {
+  app.put("/api/posts/:id", function(req, res) {
     db.Post.update(
-      req.body,
+      {
+        title:req.body.title,
+        body: req.body.body
+      },
       {
         where: {
-          id: req.body.id
+          id: req.params.id
         }
       }).then(function(dbPost) {
       res.json(dbPost);
